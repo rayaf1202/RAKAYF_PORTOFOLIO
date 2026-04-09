@@ -247,7 +247,7 @@ const ProfileSlideshow = ({ className = "" }: { className?: string }) => {
           onContextMenu={(e) => e.preventDefault()}
           draggable="false"
           onError={(e) => {
-            (e.target as HTMLImageElement).src = '/foto.jpeg';
+            (e.target as HTMLImageElement).src = 'https://res.cloudinary.com/dfa5fy1hh/image/upload/f_auto,q_auto/portfolio_migration/foto.png';
           }}
         />
       </AnimatePresence>
@@ -426,7 +426,7 @@ const Portfolio = () => {
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
                           if (project.id === 9 && !target.src.includes('gambar_9.jpg')) {
-                            target.src = '/gambar 9.jpeg';
+                            target.src = 'https://res.cloudinary.com/dfa5fy1hh/image/upload/f_auto,q_auto/portfolio_migration/gambar_9.jpg';
                           }
                         }}
                       />
