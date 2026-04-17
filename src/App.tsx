@@ -22,6 +22,30 @@ import {
 // --- Data ---
 const PROJECTS = [
   { 
+    id: 10, 
+    title: 'Company Profile Website DPD KOMNAS PPLH KARAWANG', 
+    category: 'UI/UX Design', 
+    image: 'https://res.cloudinary.com/dfa5fy1hh/image/upload/f_auto,q_auto/portfolio_migration/project_pplh_karawang.png',
+    link: 'https://www.behance.net/gallery/247685267/Webiste-DPD-Komnas-PPLH-Karawang',
+    tags: ['React', 'Tailwind', 'Responsive']
+  },
+  { 
+    id: 11, 
+    title: 'Responsive Website OT REWORK ID', 
+    category: 'UI/UX Design', 
+    image: 'https://res.cloudinary.com/dfa5fy1hh/image/upload/f_auto,q_auto/portfolio_migration/project_ot_rework.png',
+    link: 'https://www.behance.net/gallery/247685193/Website-OT-Rework-ID',
+    tags: ['Framer', 'Motion', 'Responsive']
+  },
+  { 
+    id: 12, 
+    title: 'Portfolio Website Raka Portfolio', 
+    category: 'UI/UX Design', 
+    image: 'https://res.cloudinary.com/dfa5fy1hh/image/upload/f_auto,q_auto/portfolio_migration/project_portfolio_raka.png',
+    link: 'https://www.behance.net/gallery/247685015/Website-Portfolio-Design',
+    tags: ['Portfolio', 'Creative', 'Minimal']
+  },
+  { 
     id: 1, 
     title: 'Design UI/UX Website SMAN 1 Karawang', 
     category: 'UI/UX Design', 
