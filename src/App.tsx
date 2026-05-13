@@ -16,11 +16,46 @@ import {
   ChevronRight,
   ZoomIn,
   ZoomOut,
-  CheckCircle2
+  CheckCircle2,
+  Lightbulb,
+  ShieldCheck,
+  Zap,
+  Search,
+  Cpu,
+  Layout,
+  Image as ImageIcon,
+  PenTool,
+  Brush,
+  FileText,
+  Presentation
 } from 'lucide-react';
 
 // --- Data ---
 const PROJECTS = [
+  { 
+    id: 13, 
+    title: '7 Dates - Kurma Susu Social Media Feed', 
+    category: 'Instagram Feed Design', 
+    image: 'https://res.cloudinary.com/dfa5fy1hh/image/upload/f_auto,q_auto/1_escnjv',
+    link: 'https://www.behance.net/gallery/247998375/7-Dates-Kurma-Susu',
+    tags: ['Instagram', 'Social Media', 'Feed']
+  },
+  { 
+    id: 14, 
+    title: '7 Dates - Healthy Milk Series', 
+    category: 'Instagram Feed Design', 
+    image: 'https://res.cloudinary.com/dfa5fy1hh/image/upload/f_auto,q_auto/2_e73mwj',
+    link: 'https://www.behance.net/gallery/247998375/7-Dates-Kurma-Susu',
+    tags: ['Branding', 'Layout', 'Visual']
+  },
+  { 
+    id: 15, 
+    title: '7 Dates - Juice Kurma Collection', 
+    category: 'Instagram Feed Design', 
+    image: 'https://res.cloudinary.com/dfa5fy1hh/image/upload/f_auto,q_auto/3_joaegi',
+    link: 'https://www.behance.net/gallery/247997399/7-Dates-Juice-Kurma',
+    tags: ['Juice', 'Marketing', 'Creative']
+  },
   { 
     id: 10, 
     title: 'Company Profile Website DPD KOMNAS PPLH KARAWANG', 
@@ -187,9 +222,9 @@ const Navbar = ({ currentView, onNavigate }: { currentView: string, onNavigate: 
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled || currentView !== 'home' ? 'bg-white/90 backdrop-blur-xl border-b border-gray-100 py-4' : 'bg-transparent py-8'}`}>
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <button onClick={() => handleNavClick('home')} className="text-2xl font-display font-extrabold tracking-tighter">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled || currentView !== 'home' ? 'bg-white/90 backdrop-blur-xl border-b border-gray-100 py-3 md:py-4' : 'bg-transparent py-5 md:py-8'}`}>
+      <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
+        <button onClick={() => handleNavClick('home')} className="text-xl md:text-2xl font-display font-extrabold tracking-tighter">
           RAKA<span className="text-blue-600">.</span>
         </button>
         
@@ -280,53 +315,54 @@ const ProfileSlideshow = ({ className = "" }: { className?: string }) => {
 };
 
 const Hero = ({ onNavigate }: { onNavigate: (id: string) => void }) => (
-  <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-    <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+  <section id="home" className="relative min-h-screen flex items-center pt-24 md:pt-32 pb-16 overflow-hidden">
+    <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
       <motion.div
-        initial={{ opacity: 0, x: -30 }}
-        animate={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
+        className="text-center lg:text-left"
       >
-        <span className="inline-flex items-center space-x-2 px-4 py-1.5 bg-green-50 text-green-700 rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-green-100">
-          <CheckCircle2 className="w-4 h-4 text-green-500" />
+        <span className="inline-flex items-center space-x-2 px-4 py-1.5 bg-green-50 text-green-700 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6 border border-green-100">
+          <CheckCircle2 className="w-3.5 h-3.5 md:w-4 h-4 text-green-500" />
           <span>Available for Hire</span>
         </span>
-        <h1 className="text-5xl md:text-7xl font-display font-extrabold tracking-tight leading-tight mb-10">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold tracking-tight leading-[1.1] mb-8 md:mb-10">
           Hello, I am <br />
           <span className="text-blue-600">Raka Yanuar Firdaus</span>
         </h1>
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 sm:gap-8">
           <button 
             onClick={() => onNavigate('work')} 
-            className="px-8 py-4 bg-gray-900 text-white rounded-full font-bold hover:bg-blue-600 transition-all flex items-center group"
+            className="w-full sm:w-auto px-8 py-4 bg-gray-900 text-white rounded-full font-bold hover:bg-blue-600 transition-all flex items-center justify-center group"
           >
             View My Work
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
-          <div className="flex items-center space-x-4 ml-4">
-            <a href="https://www.instagram.com/raka_yanuar/?hl=en" target="_blank" rel="noopener noreferrer" className="p-3 text-gray-400 hover:text-blue-600 transition-colors"><Instagram /></a>
-            <a href="https://www.behance.net/rakayanuarf" target="_blank" rel="noopener noreferrer" className="p-3 text-gray-400 hover:text-blue-600 transition-colors"><BehanceIcon /></a>
-            <a href="https://www.linkedin.com/in/raka-yanuar-f-6a6928205/" target="_blank" rel="noopener noreferrer" className="p-3 text-gray-400 hover:text-blue-600 transition-colors"><Linkedin /></a>
+          <div className="flex items-center space-x-6">
+            <a href="https://www.instagram.com/raka_yanuar/?hl=en" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-400 hover:text-blue-600 transition-colors"><Instagram className="w-6 h-6" /></a>
+            <a href="https://www.behance.net/rakayanuarf" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-400 hover:text-blue-600 transition-colors"><BehanceIcon /></a>
+            <a href="https://www.linkedin.com/in/raka-yanuar-f-6a6928205/" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-400 hover:text-blue-600 transition-colors"><Linkedin className="w-6 h-6" /></a>
           </div>
         </div>
       </motion.div>
       
       <motion.div 
-        initial={{ opacity: 0, scale: 0.8 }}
+        initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1 }}
-        className="relative"
+        transition={{ duration: 1, delay: 0.2 }}
+        className="relative px-4 sm:px-10 lg:px-0"
       >
-        <ProfileSlideshow className="aspect-square rounded-[40px] shadow-2xl rotate-3 bg-gray-100" />
-        <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-3xl shadow-xl border border-gray-100 -rotate-3">
-          <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Experience</p>
-          <p className="text-3xl font-display font-extrabold">3+ Years</p>
+        <ProfileSlideshow className="aspect-square rounded-[32px] sm:rounded-[40px] shadow-2xl rotate-2 lg:rotate-3 bg-gray-100 max-w-md mx-auto lg:max-w-none" />
+        <div className="absolute -bottom-4 -left-2 sm:-bottom-6 sm:-left-6 bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl border border-gray-100 -rotate-2 lg:-rotate-3">
+          <p className="text-[10px] sm:text-sm font-bold text-gray-400 uppercase tracking-widest mb-0.5 sm:mb-1">Experience</p>
+          <p className="text-xl sm:text-3xl font-display font-extrabold text-gray-900">3+ Years</p>
         </div>
       </motion.div>
     </div>
     
     {/* Background Elements */}
-    <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-50/30 -z-10 rounded-l-[100px]" />
+    <div className="absolute top-0 right-0 w-full lg:w-1/2 h-full bg-blue-50/20 -z-10 rounded-l-[50px] lg:rounded-l-[100px] hidden sm:block" />
   </section>
 );
 
@@ -391,23 +427,23 @@ const Portfolio = () => {
   return (
     <section id="work" className="py-32 bg-gray-900 text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-20">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
-          <div>
-            <h2 className="text-sm font-bold text-blue-400 uppercase tracking-[0.3em] mb-4">Graphic Designer - UI/UX Designer - IT Support</h2>
-            <p className="text-4xl md:text-6xl font-display font-extrabold tracking-tight">Showcasing Creativity.</p>
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 lg:mb-16 gap-8">
+          <div className="text-center md:text-left">
+            <h2 className="text-[10px] md:text-sm font-bold text-blue-400 uppercase tracking-[0.3em] mb-4">Graphic Designer - UI/UX Designer - IT Support</h2>
+            <p className="text-3xl sm:text-4xl md:text-6xl font-display font-extrabold tracking-tight">Showcasing Creativity.</p>
           </div>
-          <p className="text-gray-400 max-w-xs text-right hidden md:block">
+          <p className="text-gray-400 max-w-xs text-center md:text-right hidden sm:block">
             A collection of projects that define my approach to design and problem solving.
           </p>
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-20">
+        <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-12 md:mb-20">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveFilter(cat)}
-              className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all border ${
+              className={`px-4 md:px-6 py-2 md:py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all border ${
                 activeFilter === cat 
                   ? 'bg-blue-600 border-blue-500 text-white shadow-lg shadow-blue-500/20' 
                   : 'bg-gray-800 border-gray-700 text-gray-400 hover:border-gray-500 hover:text-white'
@@ -486,18 +522,18 @@ const Portfolio = () => {
 
           {/* Navigation Buttons */}
           {filteredProjects.length > 1 && (
-            <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between pointer-events-none z-10">
+            <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between pointer-events-none z-10 px-2 md:px-0">
               <button 
                 onClick={prevProject}
-                className="w-12 h-12 md:w-16 md:h-16 bg-gray-800/80 backdrop-blur-md shadow-2xl rounded-2xl flex items-center justify-center text-white hover:bg-blue-600 transition-all pointer-events-auto border border-gray-700 group"
+                className="w-10 h-10 md:w-16 md:h-16 bg-gray-800/80 backdrop-blur-md shadow-2xl rounded-xl md:rounded-2xl flex items-center justify-center text-white hover:bg-blue-600 transition-all pointer-events-auto border border-gray-700 group"
               >
-                <ChevronLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
+                <ChevronLeft className="w-5 h-5 md:w-6 h-6 group-hover:-translate-x-1 transition-transform" />
               </button>
               <button 
                 onClick={nextProject}
-                className="w-12 h-12 md:w-16 md:h-16 bg-gray-800/80 backdrop-blur-md shadow-2xl rounded-2xl flex items-center justify-center text-white hover:bg-blue-600 transition-all pointer-events-auto border border-gray-700 group"
+                className="w-10 h-10 md:w-16 md:h-16 bg-gray-800/80 backdrop-blur-md shadow-2xl rounded-xl md:rounded-2xl flex items-center justify-center text-white hover:bg-blue-600 transition-all pointer-events-auto border border-gray-700 group"
               >
-                <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                <ChevronRight className="w-5 h-5 md:w-6 h-6 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           )}
@@ -539,7 +575,7 @@ const Portfolio = () => {
               <div 
                 key={`${project.id}-${idx}`}
                 onClick={() => setSelectedProject(project)}
-                className="w-80 flex-shrink-0 group relative aspect-[4/3] rounded-3xl overflow-hidden border border-gray-800 cursor-pointer"
+                className="w-64 md:w-80 flex-shrink-0 group relative aspect-[4/3] rounded-3xl overflow-hidden border border-gray-800 cursor-pointer"
               >
                 <img 
                   src={project.image} 
@@ -659,27 +695,27 @@ const About = () => {
   }, [showCV, cvIndex]);
 
   return (
-    <section id="about" className="py-32 bg-gray-50">
+    <section id="about" className="py-20 md:py-32 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative"
+            className="relative px-4 sm:px-12 md:px-0"
           >
-            <ProfileSlideshow className="aspect-[4/5] rounded-[48px] shadow-2xl bg-gray-100" />
+            <ProfileSlideshow className="aspect-[4/5] rounded-[32px] md:rounded-[48px] shadow-2xl bg-gray-100 max-w-md mx-auto md:max-w-none" />
             <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-blue-600 rounded-[40px] -z-10 hidden lg:block opacity-10"></div>
           </motion.div>
           
-          <div>
-            <h2 className="text-sm font-bold text-blue-600 uppercase tracking-[0.3em] mb-6">About Me</h2>
-            <p className="text-4xl md:text-5xl font-display font-extrabold mb-8 leading-tight">
+          <div className="text-center md:text-left">
+            <h2 className="text-[10px] md:text-sm font-bold text-blue-600 uppercase tracking-[0.3em] mb-6">About Me</h2>
+            <p className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold mb-8 leading-[1.2]">
               Graphic Designer <br />
               UI/UX Designer <br />
               <span className="text-blue-600">& IT Support</span>.
             </p>
-            <div className="text-lg text-gray-600 mb-10 leading-relaxed space-y-4">
+            <div className="text-base md:text-lg text-gray-600 mb-10 leading-relaxed space-y-4 max-w-2xl mx-auto md:mx-0">
               <p>
                 Hi, I'm Raka, a professional Graphic Designer, UI/UX Designer, and IT Support specialist. I am a graduate of S1 Informatics Engineering from the University of Singaperbangsa Karawang (2020) with over 3 years of experience in these fields.
               </p>
@@ -821,7 +857,7 @@ const About = () => {
                 year: "2021 — 2025",
                 company: "HK Motorworks West Cikampek",
                 role: "Graphic Designer | IT Support",
-                desc: "Created branded merchandise, managed documentation, and provided IT support including CCTV and networks."
+                desc: "Created branded merchandise, managed documentation, and provided IT support."
               },
               {
                 year: "2024 — 2025",
@@ -857,16 +893,18 @@ const About = () => {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {[
-                "Creative & Innovative",
-                "High Integrity",
-                "Adaptable & Quick Learner",
-                "Strategic Researcher",
-                "IT Support Specialist",
-                "Design Principles"
+                { name: "Creative & Innovative", icon: Lightbulb },
+                { name: "High Integrity", icon: ShieldCheck },
+                { name: "Adaptable & Quick Learner", icon: Zap },
+                { name: "Strategic Researcher", icon: Search },
+                { name: "IT Support Specialist", icon: Cpu },
+                { name: "Design Principles", icon: Layout }
               ].map((skill) => (
-                <div key={skill} className="flex items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
-                  <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
-                  <span className="font-bold text-gray-700 text-sm">{skill}</span>
+                <div key={skill.name} className="flex items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 group hover:border-blue-600 transition-colors">
+                  <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mr-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <skill.icon className="w-5 h-5" />
+                  </div>
+                  <span className="font-bold text-gray-700 text-sm">{skill.name}</span>
                 </div>
               ))}
             </div>
@@ -880,12 +918,17 @@ const About = () => {
             </h3>
             <div className="flex flex-wrap gap-3">
               {[
-                "Figma", "Adobe Photoshop", "Adobe Illustrator", 
-                "Corel Draw", "MS Word", "MS Power Point"
+                { name: "Figma", icon: Layout },
+                { name: "Adobe Photoshop", icon: ImageIcon },
+                { name: "Adobe Illustrator", icon: PenTool },
+                { name: "Corel Draw", icon: Brush },
+                { name: "MS Word", icon: FileText },
+                { name: "MS Power Point", icon: Presentation }
               ].map((app) => (
-                <span key={app} className="px-6 py-3 bg-gray-900 text-white rounded-xl font-bold text-sm">
-                  {app}
-                </span>
+                <div key={app.name} className="flex items-center px-5 py-3 bg-gray-900 text-white rounded-xl font-bold text-sm hover:bg-blue-600 transition-colors group">
+                  <app.icon className="w-4 h-4 mr-2.5 text-blue-400 group-hover:text-white transition-colors" />
+                  {app.name}
+                </div>
               ))}
             </div>
           </div>
@@ -942,29 +985,29 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 bg-gray-900 text-white">
+    <section id="contact" className="py-20 md:py-32 bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-sm font-bold text-blue-400 uppercase tracking-[0.4em] mb-8">Get In Touch</h2>
-          <p className="text-5xl md:text-8xl font-display font-extrabold mb-12 tracking-tighter">
+        <div className="text-center mb-16 md:mb-20">
+          <h2 className="text-[10px] md:text-sm font-bold text-blue-400 uppercase tracking-[0.4em] mb-6 md:mb-8">Get In Touch</h2>
+          <p className="text-3xl sm:text-5xl md:text-8xl font-display font-extrabold mb-8 md:mb-12 tracking-tighter leading-tight">
             Let's create <br />
             something <span className="text-blue-500 italic">great</span>.
           </p>
 
           {/* Skills Highlight */}
-          <div className="flex flex-wrap justify-center gap-4 mb-20 max-w-4xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-16 md:mb-20 max-w-4xl mx-auto">
             {[
               "Graphic Design", "UI/UX Design", "IT Support", 
               "Creative Strategy", "Visual Branding", "Technical Support"
             ].map((skill) => (
-              <span key={skill} className="px-5 py-2 bg-gray-800/50 border border-gray-700 text-blue-400 rounded-full text-sm font-bold uppercase tracking-widest">
+              <span key={skill} className="px-4 md:px-5 py-2 bg-gray-800/50 border border-gray-700 text-blue-400 rounded-full text-[10px] md:text-sm font-bold uppercase tracking-widest">
                 {skill}
               </span>
             ))}
           </div>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
           {/* Contact Form */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
