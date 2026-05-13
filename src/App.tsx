@@ -373,9 +373,11 @@ const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState<typeof PROJECTS[0] | null>(null);
 
   const categories = ['All', ...new Set(PROJECTS.map(p => p.category))];
+  const allTags = [...new Set(PROJECTS.flatMap(p => p.tags))].sort();
+  
   const filteredProjects = activeFilter === 'All' 
     ? PROJECTS 
-    : PROJECTS.filter(p => p.category === activeFilter);
+    : PROJECTS.filter(p => p.category === activeFilter || p.tags.includes(activeFilter));
 
   const nextProject = useCallback(() => {
     setDirection(1);
@@ -438,20 +440,39 @@ const Portfolio = () => {
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-12 md:mb-20">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveFilter(cat)}
-              className={`px-4 md:px-6 py-2 md:py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all border ${
-                activeFilter === cat 
-                  ? 'bg-blue-600 border-blue-500 text-white shadow-lg shadow-blue-500/20' 
-                  : 'bg-gray-800 border-gray-700 text-gray-400 hover:border-gray-500 hover:text-white'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+        <div className="flex flex-col items-center gap-8 mb-12 md:mb-20">
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveFilter(cat)}
+                className={`px-4 md:px-6 py-2 md:py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all border ${
+                  activeFilter === cat 
+                    ? 'bg-blue-600 border-blue-500 text-white shadow-lg shadow-blue-500/20' 
+                    : 'bg-gray-800 border-gray-700 text-gray-400 hover:border-gray-500 hover:text-white'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-2 max-w-4xl">
+            <span className="w-full text-center text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Filter by Skill</span>
+            {allTags.map((tag) => (
+              <button
+                key={tag}
+                onClick={() => setActiveFilter(tag)}
+                className={`px-3 md:px-4 py-1.5 rounded-lg text-[9px] md:text-[10px] font-bold uppercase tracking-wider transition-all border ${
+                  activeFilter === tag 
+                    ? 'bg-blue-600/20 border-blue-500 text-blue-400 shadow-lg' 
+                    : 'bg-gray-800/30 border-gray-800 text-gray-500 hover:border-gray-600 hover:text-gray-300'
+                }`}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="relative px-4 md:px-20">
@@ -476,11 +497,11 @@ const Portfolio = () => {
                     onClick={() => setSelectedProject(project)}
                     className="group cursor-pointer block"
                   >
-                    <div className="relative aspect-[16/9] rounded-[40px] overflow-hidden bg-gray-800 mb-8 shadow-2xl group-hover:shadow-blue-500/20 transition-all duration-500 border border-gray-800">
+                    <div className="relative aspect-[16/9] rounded-[40px] overflow-hidden bg-gray-800 mb-8 shadow-2xl group-hover:shadow-blue-500/30 transition-all duration-500 border border-gray-800">
                       <img 
                         src={project.image} 
                         alt={project.title} 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out"
                         onContextMenu={(e) => e.preventDefault()}
                         draggable="false"
                         onError={(e) => {
@@ -490,20 +511,29 @@ const Portfolio = () => {
                           }
                         }}
                       />
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-xl">
-                          <ZoomIn className="text-gray-900 w-8 h-8" />
+                      {/* Enhanced Fade-in Overlay */}
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-8 backdrop-blur-[4px]">
+                        <div className="text-center">
+                          <p className="text-blue-400 text-xs md:text-sm font-bold uppercase tracking-[0.3em] mb-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                            {project.category}
+                          </p>
+                          <h4 className="text-white text-2xl md:text-4xl font-display font-extrabold mb-8 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                            {project.title}
+                          </h4>
+                          <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full text-gray-900 shadow-2xl transform scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-700 delay-200">
+                            <ZoomIn className="w-8 h-8" />
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div className="text-center">
-                      <p className="text-sm font-bold text-blue-400 uppercase tracking-widest mb-3">{project.category}</p>
-                      <h3 className="text-3xl md:text-4xl font-display font-bold leading-tight mb-6">{project.title}</h3>
+                    <div className="text-center transform transition-all duration-500 group-hover:-translate-y-2">
+                      <p className="text-sm font-bold text-blue-400 uppercase tracking-widest mb-3 transition-colors group-hover:text-blue-300">{project.category}</p>
+                      <h3 className="text-3xl md:text-4xl font-display font-bold leading-tight mb-6 transition-colors group-hover:text-blue-500">{project.title}</h3>
                       <div className="flex flex-wrap justify-center gap-3">
                         {project.tags.map((tag) => (
                           <span 
                             key={tag} 
-                            className="px-4 py-2 bg-gray-800 text-gray-400 rounded-full text-xs font-bold uppercase tracking-wider border border-gray-700 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-500 transition-colors"
+                            className="px-4 py-2 bg-gray-800 text-gray-400 rounded-full text-xs font-bold uppercase tracking-wider border border-gray-700 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-500 transition-colors shadow-sm"
                           >
                             {tag}
                           </span>
