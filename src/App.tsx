@@ -33,6 +33,14 @@ import {
 // --- Data ---
 const PROJECTS = [
   { 
+    id: 16, 
+    title: 'CogniCentre Brand Identity', 
+    category: 'Graphic Design', 
+    image: 'https://res.cloudinary.com/dfa5fy1hh/image/upload/f_auto,q_auto/31_ckmm5r',
+    link: 'https://www.behance.net/gallery/251095787/CogniCentre-Brand-Identity',
+    tags: ['Branding', 'Logo', 'Identity', 'Illustrator']
+  },
+  { 
     id: 13, 
     title: '7 Dates - Kurma Susu Social Media Feed', 
     category: 'Instagram Feed Design', 
@@ -356,7 +364,7 @@ const Hero = ({ onNavigate }: { onNavigate: (id: string) => void }) => (
         <ProfileSlideshow className="aspect-square rounded-[32px] sm:rounded-[40px] shadow-2xl rotate-2 lg:rotate-3 bg-gray-100 max-w-md mx-auto lg:max-w-none" />
         <div className="absolute -bottom-4 -left-2 sm:-bottom-6 sm:-left-6 bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl border border-gray-100 -rotate-2 lg:-rotate-3">
           <p className="text-[10px] sm:text-sm font-bold text-gray-400 uppercase tracking-widest mb-0.5 sm:mb-1">Experience</p>
-          <p className="text-xl sm:text-3xl font-display font-extrabold text-gray-900">3+ Years</p>
+          <p className="text-xl sm:text-3xl font-display font-extrabold text-gray-900">4+ Years</p>
         </div>
       </motion.div>
     </div>
@@ -747,7 +755,7 @@ const About = () => {
             </p>
             <div className="text-base md:text-lg text-gray-600 mb-10 leading-relaxed space-y-4 max-w-2xl mx-auto md:mx-0">
               <p>
-                Hi, I'm Raka, a professional Graphic Designer, UI/UX Designer, and IT Support specialist. I am a graduate of S1 Informatics Engineering from the University of Singaperbangsa Karawang (2020) with over 3 years of experience in these fields.
+                Hi, I'm Raka, a professional Graphic Designer, UI/UX Designer, and IT Support specialist. I am a graduate of S1 Informatics Engineering from the University of Singaperbangsa Karawang (2020) with over 4 years of experience in these fields.
               </p>
               <p>
                 My ability to work both independently and as part of a team, coupled with strong adaptability and time management skills, allows me to excel in dynamic environments.
@@ -756,7 +764,7 @@ const About = () => {
             
             <div className="flex flex-wrap items-center gap-8 mb-12">
               <div>
-                <p className="text-3xl font-display font-extrabold text-gray-900">3+</p>
+                <p className="text-3xl font-display font-extrabold text-gray-900">4+</p>
                 <p className="text-sm text-gray-500 font-bold uppercase tracking-widest">Years Experience</p>
               </div>
               <button 
