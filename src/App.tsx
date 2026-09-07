@@ -33,6 +33,22 @@ import {
 // --- Data ---
 const PROJECTS = [
   { 
+    id: 18, 
+    title: 'Anna Beauty - Body Wash Packaging Concept', 
+    category: 'Packaging Design', 
+    image: 'https://res.cloudinary.com/dfa5fy1hh/image/upload/f_auto,q_auto/bodywash',
+    link: 'https://www.behance.net/gallery/255371449/Anna-Beauty-Body-Wash-Packaging-Concept',
+    tags: ['Packaging', 'Body Wash', 'Branding', 'Beauty']
+  },
+  { 
+    id: 17, 
+    title: 'Anna Beauty Essential - Serum Packaging', 
+    category: 'Packaging Design', 
+    image: 'https://res.cloudinary.com/dfa5fy1hh/image/upload/f_auto,q_auto/project_2_-_serum_bottle_l7r1bh',
+    link: 'https://www.behance.net/gallery/255373227/Anna-Beauty-Essential-Serum-Packaging',
+    tags: ['Packaging', 'Serum', 'Branding', 'Beauty']
+  },
+  { 
     id: 16, 
     title: 'CogniCentre Brand Identity', 
     category: 'Graphic Design', 
